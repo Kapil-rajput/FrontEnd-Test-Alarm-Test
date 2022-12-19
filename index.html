@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Alarm Clock</title>
+    <script src="https://kit.fontawesome.com/1aa1ed5563.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <section class="quote">
+                <i class="left fa-solid fa-quote-left"></i>
+                <span class="quoteline">
+                    <p>All we have to decide <br> is what to do with the time <br> that is given to us</p>
+                </span>
+                <i class="right fa-solid fa-quote-right"></i>
+            </section>
+
+            <section class="watch">
+                <div class="current-time">
+                    <span id="hour"></span>
+                    <span id="middle">:</span>
+                    <span id="min"></span>
+                    <span id="middle">:</span>
+                    <span id="sec"></span>
+                    <span id="ampm"></span>
+                </div>
+                <div class="today">
+                    <span id="date">11</span>
+                    <span id="month">January</span>
+                    <span id="year">2023</span>
+                </div>
+                <div>
+                    <span id="day">Monday</span>
+                </div>
+            </section>
+        </div>
+
+        <!-- Now the header parts complete which include 1 quote in left and time date in right -->
+        <!--  Now from here alarm sectio will start -->
+
+        <div class="alarm">
+            <section class="alarmset">
+                <h2>Set Alarm</h2>
+                <form action="" class="add-alarm">
+                        <input type="number" name="hour" id="alhour"  placeholder="HH" min="00" max="12"  value="00">
+       
+                        <input type="number" name="min" id="almin"  placeholder="MM" min="00" max="59" value="00">
+                        
+                        <input type="number" name="sec" id="alsec" placeholder="SS" min="00" max="59" value="00">
+               
+                        <input type="text" name="ampm" id="alampm" placeholder="AM" maxlength="2" value="PM">
+        
+                    <button type="submit" id="set-btn">Add</button>
+                </form>
+
+            </section>
+
+            <!-- this is for alarm list -->
+
+            <section class="alarm-list">
+
+                <div class="title">
+                    <h2>Alarms</h2>
+                </div>
+                <div class="lists">
+                    <ul class="listaddhere">
+                       
+                    </ul>
+                </div>
+
+            </section>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
