@@ -11,7 +11,7 @@ i) You will have to manually give the input for alarm time, No button available 
 
 Usage:
 
-a. Application is developed only for browsers. 
+a. Application is developed only for browsers but for different sizes of screen. 
 b. Time will be visible on top side of display and will change every second. 
 c. Alarm can be set for any time less than 12 hours. 
 d. Alarm can be deleted any time before it runs. 
