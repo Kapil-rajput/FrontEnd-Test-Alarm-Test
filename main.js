@@ -1,3 +1,5 @@
+//  function to display watch i.e current time
+
 function watch() {
     setInterval(() => {
         const today = new Date();
@@ -18,6 +20,7 @@ function watch() {
         let mon = today.toLocaleString('default', { month: 'long' });
         let dayy = today.toLocaleString('default', { weekday: 'long' });
         if (h < 12) {
+            // to check whether it is am or pm
             ampm.innerHTML = ("AM");
             alarm_ampm = ("AM")
         }
@@ -25,10 +28,10 @@ function watch() {
             ampm.innerHTML = ("PM");
             alarm_ampm = ("PM")
         }
-        if (h > 12) {
+        if (h > 12) { // to convert the clock to 12 hour clock
             h = h - 12;
         }
-        if (h < 10) {
+        if (h < 10) { //  to add zero in front of hour to look pretty
             h = '0' + h;
         }
         if (m < 10) {
@@ -48,11 +51,14 @@ function watch() {
         alarmhit(h, m, s, alarm_ampm)
 
 
-    }, 1000);
+    }, 1000); // interval to refresh time each second
 };
 watch();
 
 // ......................................................................................................................................................
+
+
+// to add alarm 
 
 const alarm = document.querySelector(".add-alarm");
 const alarm_list = document.querySelector(".listaddhere");
@@ -68,28 +74,32 @@ alarm.addEventListener("submit", (e) => {
     let alarm_sec = document.getElementById("alsec").value;
     let alarm_ampm = document.getElementById("alampm").value;
     alarm_ampm = alarm_ampm.toUpperCase();
-    if (alarm_hour < 10 && alarm_hour > 00) {
+    if (alarm_hour < 10 && alarm_hour >= 00 && alarm_hour.length < 2) {
+        // to add zero in front of hour in alram list if hour is less than 10
         alarm_hour = '0' + alarm_hour;
     }
-    if (alarm_min < 10 && alarm_min > 00) {
+    if (alarm_min < 10 && alarm_min >= 00 && alarm_min.length < 2) {
+        // to add zero in front of min in alram list if hour is less than 10
         alarm_min = '0' + alarm_min;
     }
-    if (alarm_sec < 10 && alarm_sec > 00) {
+    if (alarm_sec < 10 && alarm_sec >= 00 && alarm_sec.length < 2) {
+        // to add zero in front of sec in alram list if hour is less than 10
         alarm_sec = '0' + alarm_sec;
     }
-    if(alarm_ampm != 'AM' && alarm_ampm != 'PM'){
+    if (alarm_ampm != 'AM' && alarm_ampm != 'PM') {
+        // to add default alram if user input else rather than am and pm
         alarm_ampm = 'PM';
     }
     const alarm_det = `${alarm_hour} : ${alarm_min} : ${alarm_sec} ${alarm_ampm}`
-    alarm_array.push(alarm_det);
-    const newLi = document.createElement("li");
+    alarm_array.push(alarm_det);// pushing value into the array
+    const newLi = document.createElement("li");//new li item
     newLi.classList.add("alarms");
-    newLi.setAttribute('id', `${id}`)
+    newLi.setAttribute('id', `${id}`) // setting attribute
     const newLiInnerHtml =
         `<div class="alarm-li"> <span class="details" >${alarm_det}</span>
             <button class="delete-btn">Delete</button></div>`;
     newLi.innerHTML = newLiInnerHtml;
-    alarm_list.append(newLi);
+    alarm_list.append(newLi); //appending li 
     id++;
     // console.log(alarm_list);
 })
@@ -98,8 +108,8 @@ alarm_list.addEventListener("click", (e) => {
         const alarm_to_delete = e.target.parentNode.parentNode;
         // console.log(alarm_to_delete);
         index = (alarm_to_delete.getAttribute('id'));
-        alarm_array.splice(index, 1);
-        alarm_to_delete.remove();
+        alarm_array.splice(index, 1); // getting that particular item in array and getting index value to remove that from list
+        alarm_to_delete.remove(); // removing that alarm from list
     }
 })
 
@@ -107,11 +117,11 @@ alarm_list.addEventListener("click", (e) => {
 //.................................................................................................... 
 function alarmhit(hour, min, sec, ap) {
 
-    const current_time = `${hour} : ${min} : ${sec} ${ap}`;
+    const current_time = `${hour} : ${min} : ${sec} ${ap}`; // getting current time
     // console.log(current_time, alarm_array[i]);
     for (let i = 0; i < alarm_array.length; i++) {
         // console.log(current_time, alarm_array[i]);
-        if (current_time == alarm_array[i]) {
+        if (current_time == alarm_array[i]) { //  checking condition  if it will true alarm will triggered
             alert("Alarm Triggered of " + `${alarm_array[i]}`)
         }
     }
